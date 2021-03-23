@@ -1,0 +1,13 @@
+nav{
+    display: flex;
+    flex-wrap: wrap;
+    height: 3rem;
+    position: sticky;
+    padding: 0.5rem;
+}
+
+nav li{
+    width: 33%;
+    height: auto;
+    text-decoration: none;
+}
