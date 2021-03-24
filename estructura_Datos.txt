@@ -1,0 +1,43 @@
+clave bd = ValkoMedical
+****** Datos del Cliente ********
+*   nombre - texto
+*   DNI - numerico
+*   telefono - numerico
+
+****** Datos del Balon **********
+*   DNI cliente - numerico
+*   serial - numerico
+*   capacidad - numerico
+*   tulipa - booleano
+*   ubicacion - texto
+*   oxigeno - booleano
+
+******* Datos venta *************
+*   DNI cliente - numerico
+*   fecha entrada - date
+*   fecha salida - date
+*   pago - booleano
+*   operacion - numerico
+
+******** Datos Stock *************
+
+****** Datos de balon *************
+*   serial - numerico
+*   capacidad - numerico
+*   tulipa - booleano
+*   marca - texto
+
+******* registro de movimientos ****
+*   serial balon - numerico
+*   ubicacion - texto
+*   fecha entrada - date
+*   fecha salida - date
+*   oxigeno - booleano
+
+
+******** Datos Usuario  **************
+*   DNI usuario - numerico
+*   nombre usuario - texto
+*   cargo - texto
+*   telefono - numerico
+*   privilegio - numerico
