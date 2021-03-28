@@ -25,3 +25,8 @@ clave bd = ValkoMedical
 *   estado - booleano
 *   pago - numerico
 *   fecha pago - dateTime
+
+******** stados ****************
+*   serial balon - numerico
+*   estado - booleano
+*   operacion - texto

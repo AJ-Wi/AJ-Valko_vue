@@ -69,11 +69,6 @@
     /*el height se saca con esta ecuacion (50 * width)/86 */
     height: 29.0697674419px;
     margin-bottom: 20px;
-    transition: all 0.5s ease-out;
-  }
-  .hexagono:hover {
-    transform: scale(1.2);
-    transition: all 0.5s ease-out;
   }
   .hexagono::after {
     content: "";

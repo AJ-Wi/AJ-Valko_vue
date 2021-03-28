@@ -1,0 +1,26 @@
+<svg viewBox="0 0 610 450" xmlns="http://www.w3.org/2000/svg">
+  <g
+     id="MenuCelular"
+     transform="translate(-94.382022,-164.23221)"
+     onmouseover="style.cursor = 'pointer'"
+     style="fill:#000000">
+    <rect
+       ry="3.2923"
+       y="176.77902"
+       x="104.86893"
+       height="86.891388"
+       width="590.26215"/>
+    <rect
+       width="590.26215"
+       height="86.891388"
+       x="104.86893"
+       y="349.06366"
+       ry="3.2923" />
+    <rect
+       ry="3.2923"
+       y="521.34827"
+       x="104.86893"
+       height="86.891388"
+       width="590.26215" />
+  </g>
+</svg>
