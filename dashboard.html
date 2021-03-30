@@ -39,7 +39,28 @@
           <label>Recepcion de Balones</label>
     </header>
     <main>
-<input type="text" name="nombre" id="nombre">
+      <label>Nombres</label>
+      <input type="text" name="nombres" id="nombres" required /> 
+      <label>DNI</label>
+      <input type="number" name="DNI" id="DNI" required /> 
+      <label>telefono</label>
+      <input type="tel" name="telefono" id="telefono" required /> 
+      <label>quien Autoriza</label>
+      <input type="text" name="autorizador" id="autorizador" required /> 
+      <hr/><br>
+      <label>Serial del Balon</label>
+      <input type="number" name="serial" id="serial" required /> 
+      <label>Capacidad del Balon</label>
+      <input type="number" name="capacidad" id="capacidad" required /> 
+      <label>Marca del Balon</label>
+      <input type="text" name="marca" id="marca" required /> 
+      <label id="swi">El Balon tiene tulipa
+         <label class="switch">
+            <input type="checkbox">
+            <div class="slider round"></div>
+         </label>
+      </label>      
+      <button>Rejistrar Balon</button>
     </main>
     <footer>
         <nav>
@@ -137,6 +158,7 @@
            </a>
         </nav>
     </footer>
+    <script src="js/AJ.js"></script>
     <script src="js/AJmenu.js"></script>
 </body>
 </html>
