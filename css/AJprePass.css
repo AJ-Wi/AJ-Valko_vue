@@ -68,6 +68,7 @@
     width: 50px;
     /*el height se saca con esta ecuacion (50 * width)/86 */
     height: 29.0697674419px;
+    /*height: calc((50 * width)/86);*/
     margin-bottom: 20px;
   }
   .hexagono::after {
