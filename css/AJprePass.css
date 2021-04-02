@@ -42,6 +42,24 @@
     0% {opacity: 0; transform: translateX(9rem);}
 }
 
+#logo{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.teclado{
+    display: flex;
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tecla{
+    cursor: pointer;
+}
+
 #teclado{
     display: flex;
     width: 150px;
