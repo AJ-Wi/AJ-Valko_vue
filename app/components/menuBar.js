@@ -14,16 +14,18 @@ export function menuBtn(panelBtn, panel, menuLink){
 }
 
 export function menuBar(){
-    const menu = d.createElement("nav")
+    const menu = d.createElement("header")
     
     menu.innerHTML = /*html*/ `
-        <button class="panel-btn hamburger hamburger--vortex" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
-        <h1>VALKO Medical</h1>
-        <button class="dark-theme-btn">🌙</button>
+        <nav>
+            <button class="panel-btn hamburger hamburger--vortex" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <h1>VALKO Medical</h1>
+            <button class="dark-theme-btn">🌙</button>
+        </nav>
     `
     return menu
 }
