@@ -1,0 +1,28 @@
+/* **********     DarkThemeButton     ********** */
+.dark-theme-btn {
+    position: fixed;
+    z-index: 999;
+    top: 0vh;
+    right: 1vw;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    transition: all 0.3s ease-out;
+  }
+  
+  .dark-theme-btn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
+  }
+  
+  .dark-mode {
+    background-color: var(--second-color);
+    color: var(--main-color);
+  }
