@@ -19,10 +19,10 @@
   
   .dark-theme-btn:hover {
     background-color: var(--second-color);
-    color: var(--main-color);
+    color: var(--ligth-color);
   }
   
   .dark-mode {
     background-color: var(--second-color);
-    color: var(--main-color);
+    color: var(--ligth-color);
   }

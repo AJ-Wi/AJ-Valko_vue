@@ -6,12 +6,11 @@
 :root{
     --main-font:sans-serif;
     --font-size:16px;
-    --main-color:#f7df1e;
-    --primary-color:#1A366D;
-    --second-color:#222;
-    --text-color:rgb(252,253,255);
-    --main-modal-color:rgba(247,222,30,0.85);
-    --second-modal-color:rgba(34,34,34,0.85);
+    --primary-color:#1a366d;
+    --second-color: #000000;
+    --ligth-color: #e2e2df;
+    --primary-logo-color:#008AFC;
+    --second-logo-color: #67bd31;
     --container-width:1200px;
 }
 

@@ -6,7 +6,7 @@ footer{
     width: 100%;
     height: 3rem;
     padding-bottom: 16px;
-    background: var(--main-color);
+    background: var(--primary-color);
     border-top: 1px solid var(--second-color);
     z-index:2000;
 }
@@ -22,4 +22,14 @@ nav a{
     width: 25%;
     height: 100%;
     text-align: center;
+}
+
+.navBarItem{
+    fill: var(--ligth-color);
+    stroke: var(--second-color);
+}
+
+.navBarItem.is-active{
+    fill: var(--second-color);
+    stroke: var(--ligth-color);
 }
