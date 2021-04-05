@@ -17,6 +17,7 @@ export function inputs(props){
     
     label.setAttribute("for", `${name}`)
     label.innerHTML = `${text}`
+    input.setAttribute("data-dark", "")
     inputControl.appendChild(label.cloneNode(true))
     
     input.name = name

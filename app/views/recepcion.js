@@ -1,8 +1,9 @@
-import { inputs } from "../components/inputs.js"
+import { inputs } from "../components/Inputs.js"
 
 export function recepcion(){
-    const rec = document.createElement("main")
     const form = document.createElement("form")
+    const button = document.createElement("button")
+    button.innerHTML = "registrar"
 
     form.appendChild(inputs({
         name: "nombre",
@@ -54,8 +55,7 @@ export function recepcion(){
         required: false,
         text: "Balon con tulipa"
     }))
+    form.appendChild(button)
 
-
-    rec.appendChild(form)
-    return rec
+    return form
 }

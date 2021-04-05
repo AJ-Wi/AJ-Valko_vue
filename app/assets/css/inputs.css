@@ -28,7 +28,6 @@
     background-position: -1920px 0;
     background-size: 100%;
     background-repeat: no-repeat;
-    color: #000;
     font-size: 14px;
     font-weight: 100;
 }
@@ -68,4 +67,13 @@
 .label-radio{
     font-size: 18px;
     margin-left: 20px;
+}
+
+form button{
+    position: relative;
+    width: 50%;
+    height: 30px;
+    margin-top: 20px;
+    font-size: 18px;
+    
 }
