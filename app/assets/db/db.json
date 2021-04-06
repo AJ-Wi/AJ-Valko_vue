@@ -1,0 +1,74 @@
+{
+  "balones": [
+    {
+      "capacidad": 0,
+      "marca": "",
+      "serial": 2,
+      "tulipa": "",
+      "id": 2
+    },
+    {
+      "capacidad": 0,
+      "marca": "",
+      "serial": 235625,
+      "tulipa": "",
+      "id": 3
+    },
+    {
+      "capacidad": 0,
+      "marca": "",
+      "serial": 235626,
+      "tulipa": "",
+      "id": 4
+    },
+    {
+      "capacidad": 10,
+      "marca": "norrys",
+      "serial": 542865,
+      "tulipa": 1,
+      "id": 5
+    },
+    {
+      "marca": "pepe",
+      "id": 1
+    }
+  ],
+  "clientes": [
+    {
+      "DNI": 14261751,
+      "autorizador": "",
+      "nombre": "wladimir",
+      "telefono": 0,
+      "id": 1
+    }
+  ],
+  "estados": [
+    {
+      "serial": 235626,
+      "estado": "vacio",
+      "operacion": "recepcion",
+      "id": 1
+    }
+  ],
+  "movimientos": [
+    {
+      "DNIclientes": 14261751,
+      "DNIusuario": 14261751,
+      "estado": "vacio",
+      "fecha": "2021-04-05",
+      "fechapago": null,
+      "operacion": "recepcion",
+      "pago": null,
+      "serial": 235626,
+      "id": 1
+    }
+  ],
+  "usuarios": [
+    {
+      "DNI": 14261751,
+      "nombre": "Wladimir Perez",
+      "pribilegios": "Administrador",
+      "id": 1
+    }
+  ]
+}
