@@ -1,0 +1,16 @@
+index.html
+app
+    assets
+        css
+        db
+        img
+    compoents
+        component.js
+    helpers
+        ajax.js
+    router
+        router.js
+    views
+        vista.js
+    App.js
+    index.js
