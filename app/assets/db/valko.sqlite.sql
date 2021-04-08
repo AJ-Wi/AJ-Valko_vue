@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS balones (
+	serial	INTEGER NOT NULL UNIQUE,
+	capacidad	INTEGER NOT NULL,
+	tulipa	TEXT NOT NULL,
+	marca	TEXT NOT NULL,
+	PRIMARY KEY(serial)
+);
+CREATE TABLE IF NOT EXISTS clientes (
+	nombre	TEXT NOT NULL,
+	DNI	INTEGER NOT NULL UNIQUE,
+	telefono	INTEGER NOT NULL,
+	autorizador	TEXT NOT NULL,
+	PRIMARY KEY(DNI)
+);
+CREATE TABLE IF NOT EXISTS estados (
+	serial	INTEGER NOT NULL,
+	estado	INTEGER NOT NULL,
+	operacion	TEXT NOT NULL,
+	PRIMARY KEY(serial)
+);
+CREATE TABLE IF NOT EXISTS movimientos (
+	DNIclientes	INTEGER NOT NULL,
+	DNIusuario	INTEGER NOT NULL,
+	serial	INTEGER NOT NULL,
+	fecha	NUMERIC NOT NULL,
+	operacion	TEXT NOT NULL,
+	estado	TEXT,
+	pago	NUMERIC UNIQUE,
+	fechapago	NUMERIC,
+	PRIMARY KEY(DNIclientes)
+);
+CREATE TABLE IF NOT EXISTS usuarios (
+	DNI	INTEGER NOT NULL UNIQUE,
+	nombre	TEXT,
+	pribilegios	TEXT,
+	PRIMARY KEY(DNI)
+);
