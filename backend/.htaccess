@@ -1,4 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine On
-RewriteRule ^api/v1/([a-zA-Z]+)/*(.+)$ vmApi.php?peticion=$1&p=$2
-#^(.+?)/?$
