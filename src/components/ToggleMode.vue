@@ -1,9 +1,21 @@
 <template>
   <label class="togglemode">
-    <input type="checkbox" checked />
+    <input type="checkbox" @checked="check =!check" />
     <span></span>
   </label>
 </template>
+
+<script>
+  export default{
+    name: "togglemode",
+    data(){
+      return{
+        check: false,
+      }
+    }
+    props:["image", "bg", "bgSlider"],
+  }
+</script>
 
 <style>
 .togglemode {
@@ -30,7 +42,7 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  transition: left var(0.25s), transform var(0.25s);
+  transition: left 0.25s, transform 0.25s;
   border: 1px solid var(--bg-toggle);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
