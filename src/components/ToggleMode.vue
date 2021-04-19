@@ -1,12 +1,12 @@
 <template>
-  <label id="togglemode">
+  <label class="togglemode">
     <input type="checkbox" checked />
     <span></span>
   </label>
 </template>
 
-<style scoped>
-#togglemode {
+<style>
+.togglemode {
   width: 42px;
   height: 1rem;
   background-color: var(--bg-toggle);
@@ -15,11 +15,11 @@
   position: relative;
 }
 
-#togglemode input {
+.togglemode input {
   opacity: 0;
 }
 
-#togglemode span {
+.togglemode span {
   width: 24px;
   height: 24px;
   border-radius: 50%;

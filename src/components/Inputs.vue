@@ -103,16 +103,17 @@ export default {
 <style scoped>
 .control-inputs {
   position: relative;
+  text-align: left;
 }
 
 .inputs {
   position: relative;
   z-index: 2;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   width: 100%;
   display: block;
   border: none;
-  padding: 10px 0;
+  padding: 5px 0;
   border-bottom: solid 1px #d2d2d2;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   background: linear-gradient(
@@ -123,7 +124,6 @@ export default {
   background-position: -1920px 0;
   background-size: 100%;
   background-repeat: no-repeat;
-  color: #000;
   font-size: 14px;
   font-weight: 100;
 }
@@ -139,15 +139,15 @@ export default {
   font-size: 14px;
   font-weight: 300;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  margin: 30px 0 30px;
+  margin: 10px 0 10px;
   display: inline-block;
-  transform: translateY(-18px);
+  transform: translateY(-5px);
   position: absolute;
 }
 
 .label_focus,
 .label_active {
-  transform: translateY(-38px);
+  transform: translateY(-20px);
   font-size: 10px;
 }
 

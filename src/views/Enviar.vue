@@ -1,5 +1,7 @@
 <template>
   <div class="enviar">
-    <h1>Esta es la pagina ENVIAR</h1>
+    <input type="checkbox" name="uno" id="uno" /><label for="uno"
+      >2154645</label
+    >
   </div>
 </template>
