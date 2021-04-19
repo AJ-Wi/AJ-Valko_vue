@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <Inputs type="text" name="user">User</Inputs>
+    <Inputs type="password" name="pass">password</Inputs>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -54,56 +56,86 @@
     <h3>Essential Links</h3>
     <ul>
       <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
-      </li>
-      <li>
-        <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
-          >Forum</a
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
+          target="_blank"
+          rel="noopener"
+          >babel</a
         >
       </li>
       <li>
-        <a href="https://chat.vuejs.org" target="_blank" rel="noopener"
-          >Community Chat</a
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
+          target="_blank"
+          rel="noopener"
+          >pwa</a
         >
       </li>
       <li>
-        <a href="https://twitter.com/vuejs" target="_blank" rel="noopener"
-          >Twitter</a
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
+          target="_blank"
+          rel="noopener"
+          >router</a
         >
       </li>
       <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
+          target="_blank"
+          rel="noopener"
+          >vuex</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
+          target="_blank"
+          rel="noopener"
+          >eslint</a
+        >
       </li>
     </ul>
-    <h3>Ecosystem</h3>
+    <h3>Essential Links</h3>
     <ul>
       <li>
-        <a href="https://router.vuejs.org" target="_blank" rel="noopener"
-          >vue-router</a
-        >
-      </li>
-      <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
-      </li>
-      <li>
         <a
-          href="https://github.com/vuejs/vue-devtools#vue-devtools"
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
           target="_blank"
           rel="noopener"
-          >vue-devtools</a
-        >
-      </li>
-      <li>
-        <a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener"
-          >vue-loader</a
+          >babel</a
         >
       </li>
       <li>
         <a
-          href="https://github.com/vuejs/awesome-vue"
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa"
           target="_blank"
           rel="noopener"
-          >awesome-vue</a
+          >pwa</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router"
+          target="_blank"
+          rel="noopener"
+          >router</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex"
+          target="_blank"
+          rel="noopener"
+          >vuex</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
+          target="_blank"
+          rel="noopener"
+          >eslint</a
         >
       </li>
     </ul>
@@ -111,8 +143,12 @@
 </template>
 
 <script>
+import Inputs from "@/components/Inputs.vue";
 export default {
   name: "HelloWorld",
+  computed: {
+    Inputs,
+  },
   props: {
     msg: String,
   },
