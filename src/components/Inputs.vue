@@ -137,7 +137,7 @@ export default {
 .labels {
   color: #898989;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 500;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   margin: 10px 0 10px;
   display: inline-block;

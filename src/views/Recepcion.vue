@@ -6,7 +6,9 @@
     <Inputs type="text" name="autorizador">Quien autoriza</Inputs>
     <Inputs type="text" name="serial">Serial del balon</Inputs>
     <Inputs type="text" name="marca">Marca del balon</Inputs>
-    <ToggleMode />
+    <ToggleMode text="true">Tulipa</ToggleMode>
+    <ToggleMode text="true" val1="8" val2="10">Capacidad</ToggleMode>
+    <input type="button" value="Guardar" />
   </div>
 </template>
 

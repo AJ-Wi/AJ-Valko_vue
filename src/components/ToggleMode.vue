@@ -1,8 +1,9 @@
 <template>
-  <div class="contenToggle">
+  <div class="contenToggle" :class="{ line: text }">
+    <label v-if="text" class="label"><slot></slot></label>
     <label class="togglemode" :class="{ darkMode: dark, on: check }">
-      <input type="checkbox" v-model="check" />
-      <span></span>
+      <input type="checkbox" @change="insertValue()" v-model="check" />
+      <span>{{ value }}</span>
     </label>
   </div>
 </template>
@@ -13,16 +14,40 @@ export default {
   data() {
     return {
       check: false,
+      value: this.val1,
     };
   },
-  props: ["dark"],
+  props: ["dark", "text", "val1", "val2"],
+  methods: {
+    insertValue() {
+      if (!this.check) {
+        this.value = this.val1;
+      } else {
+        this.value = this.val2;
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .contenToggle {
   display: flex;
+  justify-content: space-between;
 }
+
+.label {
+  color: #898989;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.line {
+  border-bottom: 1px solid #d2d2d2;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
 .togglemode {
   width: 42px;
   height: 1rem;
@@ -50,6 +75,9 @@ export default {
   transition: left 0.25s, transform 0.25s;
   border: 1px solid #898989;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .togglemode.on {
