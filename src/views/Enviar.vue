@@ -1,7 +1,8 @@
 <template>
   <div class="enviar">
-    <input type="checkbox" name="uno" id="uno" /><label for="uno"
-      >2154645</label
-    >
+    <h1>Esta es la pagina ENVIAR</h1>
   </div>
 </template>
+
+<script></script>
+<style scoped></style>

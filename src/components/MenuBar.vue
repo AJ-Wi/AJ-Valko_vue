@@ -1,7 +1,7 @@
 <template>
   <div id="menubar">
     <h1>{{ title }}</h1>
-    <ToggleMode />
+    <ToggleMode dark="true" />
   </div>
 </template>
 
@@ -19,7 +19,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #menubar {
   position: sticky;
