@@ -9,6 +9,7 @@
 </template>
 
 <script>
+const $selectors = document.querySelectorAll("[data-dark]");
 export default {
   name: "togglemode",
   data() {
@@ -22,9 +23,19 @@ export default {
     insertValue() {
       if (!this.check) {
         this.value = this.val1;
+        if (!this.dark) this.darkMode();
       } else {
         this.value = this.val2;
+        if (!this.dark) this.lightMode();
       }
+    },
+    darkMode() {
+      localStorage.setItem("Theme", "dark");
+      $selectors.forEach((el) => el.classList.add("dark"));
+    },
+    lightMode() {
+      localStorage.setItem("Theme", "light");
+      $selectors.forEach((el) => el.classList.remove("dark"));
     },
   },
 };

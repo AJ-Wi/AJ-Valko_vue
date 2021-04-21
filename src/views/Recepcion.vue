@@ -1,5 +1,5 @@
 <template>
-  <div class="recepcion">
+  <div class="recepcion" data-dark>
     <Inputs type="text" name="paciente">Nombre del Paciente</Inputs>
     <Inputs type="number" name="DNI">DNI del Paciente</Inputs>
     <Inputs type="tel" name="celular">Telefono</Inputs>
@@ -8,19 +8,21 @@
     <Inputs type="text" name="marca">Marca del balon</Inputs>
     <ToggleMode text="true">Tulipa</ToggleMode>
     <ToggleMode text="true" val1="8" val2="10">Capacidad</ToggleMode>
-    <input type="button" value="Guardar" />
+    <Buttons>Guardar</Buttons>
   </div>
 </template>
 
 <script>
 import Inputs from "@/components/Inputs.vue";
 import ToggleMode from "@/components/ToggleMode.vue";
+import Buttons from "@/components/Buttons.vue";
 
 export default {
   name: "Recepcion",
   components: {
     Inputs,
     ToggleMode,
+    Buttons,
   },
 };
 </script>

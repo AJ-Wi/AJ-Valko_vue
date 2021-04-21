@@ -1,20 +1,21 @@
 <template>
   <div class="enviar">
-    <h1>Esta es la pagina ENVIAR</h1>
-    <li>
-      <ol class="item">
-    <input type="checkbox" name="serial" id="serial" />
-    <label for="serial">123456</label>
-    <label for="nombre">nombre</label>
-    </ol>
-    </li>
+    <h2>Balones a Enviar a Planta.</h2>
+    <ItemList
+      v-for="n in 15"
+      :key="n"
+      serial="123456"
+      cliente="Wladimir Perez"
+    />
   </div>
 </template>
+<script>
+import ItemList from "@/components/ItemList.vue";
 
-<script></script>
-<style scoped>
-  .item{
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
+export default {
+  name: "Enviar",
+  components: {
+    ItemList,
+  },
+};
+</script>
