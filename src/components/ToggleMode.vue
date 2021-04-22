@@ -9,7 +9,6 @@
 </template>
 
 <script>
-const $selectors = document.querySelectorAll("[data-dark]");
 export default {
   name: "togglemode",
   data() {
@@ -21,22 +20,28 @@ export default {
   props: ["dark", "text", "val1", "val2"],
   methods: {
     insertValue() {
-      if (!this.check) {
-        this.value = this.val1;
-        if (!this.dark) this.darkMode();
-      } else {
-        this.value = this.val2;
-        if (!this.dark) this.lightMode();
+      if (this.dark) {
+        localStorage.setItem("darkTheme", this.check);
+      } else if (this.text) {
+        if (!this.check) {
+          this.value = this.val1;
+        } else {
+          this.value = this.val2;
+        }
       }
     },
-    darkMode() {
-      localStorage.setItem("Theme", "dark");
-      $selectors.forEach((el) => el.classList.add("dark"));
-    },
-    lightMode() {
-      localStorage.setItem("Theme", "light");
-      $selectors.forEach((el) => el.classList.remove("dark"));
-    },
+  },
+  created() {
+    let darkState = JSON.parse(localStorage.getItem("darkTheme"));
+    const $selectors = document.querySelectorAll("[data-dark]");
+    $selectors.forEach((el) => el.classList.add("dark-theme"));
+    if (this.dark) {
+      if (darkState === null) {
+        this.check = false;
+      } else {
+        this.check = darkState;
+      }
+    }
   },
 };
 </script>
