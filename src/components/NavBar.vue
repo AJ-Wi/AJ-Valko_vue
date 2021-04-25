@@ -161,7 +161,7 @@ export default {
   height: 3rem;
   padding: 0.3rem;
   display: flex;
-  background: var(--bg);
+  background: var(--bg-container);
   border-top: 1px solid var(--bg-border);
   z-index: 999;
 }
@@ -175,8 +175,8 @@ export default {
 
 .navBarItem {
   height: 100%;
-  fill: var(--bg);
-  stroke: var(--bg-dm-border);
+  fill: var(--bg-container);
+  stroke: var(--bg-stroke);
 }
 
 #navbar a.router-link-exact-active .navBarItem:nth-child(1) {

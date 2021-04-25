@@ -35,14 +35,16 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/essential",
       "eslint:recommended",
       "@vue/prettier"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-multiple-template-root": "warn"
+    }
   },
   "browserslist": [
     "> 1%",

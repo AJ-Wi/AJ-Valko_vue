@@ -1,8 +1,8 @@
 <template>
   <div id="menubar">
+    <BtnMenu />
     <h1>{{ title }}</h1>
     <ToggleMode dark="true" />
-    <BtnMenu />
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   height: 3rem;
   padding: 0.3rem;
   display: flex;
-  background: var(--bg);
+  background: var(--bg-container);
   color: var(--second-color);
   border-bottom: 1px solid var(--bg-border);
   z-index: 999;

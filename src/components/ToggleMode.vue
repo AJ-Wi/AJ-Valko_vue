@@ -22,6 +22,7 @@ export default {
     insertValue() {
       if (this.dark) {
         localStorage.setItem("darkTheme", this.check);
+        document.documentElement.setAttribute("data-dark", this.check);
       } else if (this.text) {
         if (!this.check) {
           this.value = this.val1;
@@ -33,8 +34,6 @@ export default {
   },
   created() {
     let darkState = JSON.parse(localStorage.getItem("darkTheme"));
-    const $selectors = document.querySelectorAll("[data-dark]");
-    $selectors.forEach((el) => el.classList.add("dark-theme"));
     if (this.dark) {
       if (darkState === null) {
         this.check = false;
@@ -53,13 +52,13 @@ export default {
 }
 
 .label {
-  color: #898989;
+  color: var(--bg-stroke);
   font-size: 14px;
   font-weight: 500;
 }
 
 .line {
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid var(--bg-border);
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -67,7 +66,7 @@ export default {
 .togglemode {
   width: 42px;
   height: 1rem;
-  background-color: #898989;
+  background-color: var(--toggle);
   border-radius: 1rem;
   cursor: pointer;
   position: relative;
@@ -81,7 +80,7 @@ export default {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #fbfbfe;
+  background: var(--toggle-slider);
   position: absolute;
   cursor: inherit;
   box-sizing: content-box;
@@ -89,7 +88,7 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   transition: left 0.25s, transform 0.25s;
-  border: 1px solid #898989;
+  border: 1px solid var(--toggle);
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
   align-items: center;
   display: flex;
@@ -97,31 +96,31 @@ export default {
 }
 
 .togglemode.on {
-  background-color: #008afc;
+  background-color: var(--toggle-on);
 }
 
 .togglemode.on span {
-  border-color: #008afc;
+  border-color: var(--toggle-on);
 }
 
 /** para usar como Toggle Dark **/
 
 .darkMode {
-  background-color: #008afc;
+  background-color: var(--toggle-on);
 }
 
 .darkMode span {
-  background: #fbfbfe url(~@/assets/sun.svg) no-repeat 50%;
-  border-color: #008afc;
+  background: var(--toggle-slider) url(~@/assets/sun.svg) no-repeat 50%;
+  border-color: var(--toggle-on);
 }
 
 .darkMode.on {
-  background-color: #094977;
+  background-color: var(--toggle-on);
 }
 
 .darkMode.on span {
-  background: #121a21 url(~@/assets/moon.svg) no-repeat 50%;
-  border-color: #094977;
+  background: var(--toggle-slider-on) url(~@/assets/moon.svg) no-repeat 50%;
+  border-color: var(--toggle-on);
 }
 
 .on span {

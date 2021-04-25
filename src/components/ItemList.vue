@@ -34,14 +34,15 @@ export default {
   height: 2rem;
   margin: 0 auto;
   border-radius: 5px;
-  border: 1px solid #67bd31;
+  border: 1px solid var(--border-list);
   cursor: pointer;
   margin-bottom: 0.5rem;
+  color: var(--text-color);
 }
 
 .item:hover,
 .active {
-  background-color: #008afc;
+  background-color: var(--bg-list);
 }
 
 .item input {

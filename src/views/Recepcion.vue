@@ -1,5 +1,5 @@
 <template>
-  <div class="recepcion" data-dark>
+  <div class="recepcion">
     <Inputs type="text" name="paciente">Nombre del Paciente</Inputs>
     <Inputs type="number" name="DNI">DNI del Paciente</Inputs>
     <Inputs type="tel" name="celular">Telefono</Inputs>

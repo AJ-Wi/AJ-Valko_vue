@@ -21,10 +21,13 @@ export default {
 .btn {
   width: 40%;
   height: 3rem;
-  background-color: #008afc;
-  border-color: #67bd31;
+  margin: 1rem 0;
+  background-color: var(--bg-button);
+  border-color: var(--second-color);
+  color: var(--second-color);
   border-radius: 10px;
   font-weight: 900;
   font-size: 1rem;
+  cursor: pointer;
 }
 </style>

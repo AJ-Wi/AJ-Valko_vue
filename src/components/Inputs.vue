@@ -114,18 +114,15 @@ export default {
   display: block;
   border: none;
   padding: 5px 0;
-  border-bottom: solid 1px #d2d2d2;
+  border-bottom: solid 1px var(--bg-border);
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 96%,
-    #0000ff 96%
-  );
+  background: linear-gradient(to bottom, var(--bg) 96%, var(--bg-list) 96%);
   background-position: -1920px 0;
   background-size: 100%;
   background-repeat: no-repeat;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 500;
+  color: var(--second-color);
 }
 
 .inputs:focus {
@@ -135,7 +132,7 @@ export default {
 }
 
 .labels {
-  color: #898989;
+  color: var(--bg-stroke);
   font-size: 14px;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
