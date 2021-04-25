@@ -36,6 +36,7 @@ export default {
   border-radius: 5px;
   border: 1px solid #67bd31;
   cursor: pointer;
+  margin-bottom: 0.5rem;
 }
 
 .item:hover,

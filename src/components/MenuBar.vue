@@ -2,16 +2,19 @@
   <div id="menubar">
     <h1>{{ title }}</h1>
     <ToggleMode dark="true" />
+    <BtnMenu />
   </div>
 </template>
 
 <script>
 import ToggleMode from "@/components/ToggleMode.vue";
+import BtnMenu from "@/components/BtnMenu.vue";
 //768 cambio de vista a deskptop
 export default {
   name: "MenuBar",
   components: {
     ToggleMode,
+    BtnMenu,
   },
   props: {
     title: String,
