@@ -2,10 +2,10 @@
   <div class="itemlist">
     <label class="item" :class="{ active: check }">
       <input
+        v-model="check"
         type="checkbox"
         name="{{serial}}"
         value="{{serial}}"
-        v-model="check"
       />
       <div class="cel1">{{ serial }}</div>
       <div class="cel2">{{ cliente }}</div>
@@ -16,12 +16,12 @@
 <script>
 export default {
   name: "ItemList",
+  props: ["serial", "cliente"],
   data() {
     return {
       check: false,
     };
   },
-  props: ["serial", "cliente"],
 };
 </script>
 

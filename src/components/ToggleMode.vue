@@ -2,7 +2,7 @@
   <div class="contenToggle" :class="{ line: text }">
     <label v-if="text" class="label"><slot></slot></label>
     <label class="togglemode" :class="{ darkMode: dark, on: check }">
-      <input type="checkbox" @change="insertValue()" v-model="check" />
+      <input v-model="check" type="checkbox" @change="insertValue()" />
       <span>{{ value }}</span>
     </label>
   </div>
@@ -10,14 +10,24 @@
 
 <script>
 export default {
-  name: "togglemode",
+  name: "Togglemode",
+  props: ["dark", "text", "val1", "val2"],
   data() {
     return {
       check: false,
       value: this.val1,
     };
   },
-  props: ["dark", "text", "val1", "val2"],
+  created() {
+    let darkState = JSON.parse(localStorage.getItem("darkTheme"));
+    if (this.dark) {
+      if (darkState === null) {
+        this.check = false;
+      } else {
+        this.check = darkState;
+      }
+    }
+  },
   methods: {
     insertValue() {
       if (this.dark) {
@@ -31,16 +41,6 @@ export default {
         }
       }
     },
-  },
-  created() {
-    let darkState = JSON.parse(localStorage.getItem("darkTheme"));
-    if (this.dark) {
-      if (darkState === null) {
-        this.check = false;
-      } else {
-        this.check = darkState;
-      }
-    }
   },
 };
 </script>

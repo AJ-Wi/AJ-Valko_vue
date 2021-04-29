@@ -5,10 +5,10 @@
 <script>
 export default {
   name: "Buttons",
+  props: ["value"],
   data() {
     return {};
   },
-  props: ["value"],
   methods: {
     enviar() {
       //prevent default

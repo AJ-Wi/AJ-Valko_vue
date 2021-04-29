@@ -11,22 +11,22 @@
       <slot></slot>
     </label>
     <input
+      :id="name"
       :type="type"
       :name="name"
-      :id="name"
       class="inputs"
+      required
       @focus="focus = true"
       @blur="focus = false"
       @focusout="inputActive()"
-      required
     />
     <svg
       v-if="password()"
       class="eye"
-      @click="show()"
       width="9.1000004mm"
       height="4.0999999mm"
       viewBox="0 0 9.1000004 4.0999999"
+      @click="show()"
     >
       <g
         id="eye"
@@ -55,6 +55,7 @@
 
 <script>
 export default {
+  props: ["type", "name"],
   data() {
     return {
       focus: false,
@@ -62,7 +63,6 @@ export default {
       types: ["password", "email", "number", "search", "tel", "url"],
     };
   },
-  props: ["type", "name"],
   methods: {
     inputActive() {
       let i = document.querySelector("#" + this.name);

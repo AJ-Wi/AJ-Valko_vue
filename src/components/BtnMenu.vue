@@ -2,8 +2,8 @@
   <button
     class="hamburger"
     :class="{ 'is-active': active }"
-    @click="active = !active"
     type="button"
+    @click="active = !active"
   >
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
