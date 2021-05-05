@@ -16,7 +16,16 @@
 <script>
 export default {
   name: "ItemList",
-  props: ["serial", "cliente"],
+  props: {
+    serial: {
+      type: String,
+      default: "0",
+    },
+    cliente: {
+      type: String,
+      default: "Valko",
+    },
+  },
   data() {
     return {
       check: false,

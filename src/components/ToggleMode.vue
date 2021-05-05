@@ -11,7 +11,24 @@
 <script>
 export default {
   name: "Togglemode",
-  props: ["dark", "text", "val1", "val2"],
+  props: {
+    dark: {
+      type: String,
+      default: "",
+    },
+    text: {
+      type: String,
+      default: "",
+    },
+    val1: {
+      type: String,
+      default: "",
+    },
+    val2: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       check: false,

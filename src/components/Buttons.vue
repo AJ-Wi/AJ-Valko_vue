@@ -5,7 +5,6 @@
 <script>
 export default {
   name: "Buttons",
-  props: ["value"],
   data() {
     return {};
   },
@@ -21,7 +20,7 @@ export default {
 .btn {
   width: 40%;
   height: 3rem;
-  margin: 1rem 0;
+  margin: 1rem 1rem;
   background-color: var(--bg-button);
   border-color: var(--second-color);
   color: var(--second-color);

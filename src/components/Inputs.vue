@@ -55,7 +55,16 @@
 
 <script>
 export default {
-  props: ["type", "name"],
+  props: {
+    type: {
+      type: String,
+      default: "text",
+    },
+    name: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       focus: false,

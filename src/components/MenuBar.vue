@@ -17,7 +17,10 @@ export default {
     BtnMenu,
   },
   props: {
-    title: String,
+    title: {
+      type: String,
+      default: "Valko Medical",
+    },
   },
 };
 </script>

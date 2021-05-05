@@ -146,9 +146,6 @@
 <script>
 export default {
   name: "NavBar",
-  props: {
-    title: String,
-  },
 };
 </script>
 

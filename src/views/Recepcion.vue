@@ -9,6 +9,7 @@
     <ToggleMode text="true">Tulipa</ToggleMode>
     <ToggleMode text="true" val1="8" val2="10">Capacidad</ToggleMode>
     <Buttons>Guardar</Buttons>
+    <Buttons>añadir baloon</Buttons>
   </div>
 </template>
 

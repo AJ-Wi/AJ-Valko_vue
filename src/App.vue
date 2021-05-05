@@ -1,5 +1,6 @@
+/* eslint-disable vue/no-multiple-template-root */
 <template>
-  <MenuBar title="Valko Medical" />
+  <MenuBar />
   <router-view />
   <NavBar />
 </template>
