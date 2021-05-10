@@ -34,7 +34,7 @@
         />
       </svg>
     </router-link>
-    <router-link to="/enviar">
+    <router-link to="/relationship/enviar">
       <svg
         id="enviar"
         class="navBarItem"
@@ -72,7 +72,7 @@
         </g>
       </svg>
     </router-link>
-    <router-link to="/recibir">
+    <router-link to="/relationship/recibir">
       <svg
         id="recibir"
         class="navBarItem"

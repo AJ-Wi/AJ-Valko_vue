@@ -7,14 +7,10 @@ const routes = [
     component: () => import("../views/Recepcion.vue"),
   },
   {
-    path: "/enviar",
-    name: "Enviar",
-    component: () => import("../views/Enviar.vue"),
-  },
-  {
-    path: "/recibir",
-    name: "Recibir",
-    component: () => import("../views/Recibir.vue"),
+    path: "/relationship/:operacion",
+    name: "Relationship",
+    props: true,
+    component: () => import("../views/Relationship.vue"),
   },
   {
     path: "/entregar",

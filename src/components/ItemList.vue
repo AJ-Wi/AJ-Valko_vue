@@ -4,8 +4,9 @@
       <input
         v-model="check"
         type="checkbox"
-        name="{{serial}}"
-        value="{{serial}}"
+        :name="serial"
+        :value="serial"
+        @change="select(serial)"
       />
       <div class="cel1">{{ serial }}</div>
       <div class="cel2">{{ cliente }}</div>
@@ -23,13 +24,18 @@ export default {
     },
     cliente: {
       type: String,
-      default: "Valko",
+      default: "Valko Medical",
     },
   },
   data() {
     return {
       check: false,
     };
+  },
+  methods: {
+    select($i) {
+      this.$store.commit("selectSend", $i);
+    },
   },
 };
 </script>

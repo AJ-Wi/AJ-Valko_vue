@@ -1,6 +1,7 @@
 <template>
   <div class="entregar">
     <h2>Entrega de balones a Cliente.</h2>
+    <Inputs type="number" name="traking">Numero de traking</Inputs>
     <Inputs type="text" name="paciente">Nombre del Paciente</Inputs>
     <ItemList
       v-for="n in 3"
