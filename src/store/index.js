@@ -3,17 +3,10 @@ import { createStore } from "vuex";
 export default createStore({
   state() {
     return {
-      serialReception: [],
       countSend: 0,
       serialSend: [],
-      recepcion: {
-        dni: "",
-        nombre: "",
-        celular: "",
-        autorizador: "",
-        balones: [],
-      },
       dateNow: "",
+      balones: [],
     };
   },
   mutations: {
@@ -26,9 +19,6 @@ export default createStore({
         state.countSend--;
       }
     },
-    listReception(state, $i) {
-      state.serialReception.push($i);
-    },
     resetSend(state) {
       state.countSend = 0;
       state.serialSend = [];
@@ -37,7 +27,24 @@ export default createStore({
       let now = new Date(f);
       state.dateNow = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
     },
+    addBalones(state, getBalones) {
+      state.balones = getBalones;
+    },
   },
-  actions: {},
+  actions: {
+    async getBalones({ commit }, ruta) {
+      let url = `http://192.168.100.36:5555/APIs/AJ-dev-api/v1/balones${ruta}`;
+      const requestOptions = {
+        method: "get",
+      };
+      requestOptions["headers"] = {
+        "Content-Type": "application/json",
+        Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
+      };
+      const response = await fetch(url, requestOptions);
+      const data = await response.json();
+      commit("addBalones", data);
+    },
+  },
   modules: {},
 });

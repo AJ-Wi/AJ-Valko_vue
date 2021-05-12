@@ -12,6 +12,7 @@
     </label>
     <input
       :id="name"
+      v-model="valor"
       :type="type"
       :name="name"
       class="inputs"
@@ -54,6 +55,7 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 export default {
   props: {
     type: {
@@ -67,16 +69,23 @@ export default {
   },
   data() {
     return {
+      valor: "",
       focus: false,
       active: false,
       types: ["password", "email", "number", "search", "tel", "url"],
     };
   },
+  computed: {
+    ...mapState([]),
+  },
   methods: {
+    ...mapMutations([]),
     inputActive() {
       let i = document.querySelector("#" + this.name);
       if (i.value) {
         this.active = true;
+        this.$emit("value", this.valor);
+        this.value = "";
       } else {
         this.active = false;
       }

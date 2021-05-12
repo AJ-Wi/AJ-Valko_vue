@@ -1,35 +1,34 @@
 <template>
-  <div class="itemlist">
-    <label class="item" :class="{ active: check }">
+  <div>
+    <label class="item-checkList" :class="{ 'is-Active': checked }">
       <input
-        v-model="check"
+        v-model="checked"
         type="checkbox"
-        :name="serial"
-        :value="serial"
-        @change="select(serial)"
+        :name="itemid"
+        @change="select(itemid)"
       />
-      <div class="cel1">{{ serial }}</div>
-      <div class="cel2">{{ cliente }}</div>
+      <div class="item-id">{{ itemid }}</div>
+      <div class="iten-content">{{ itemcontent }}</div>
     </label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ItemList",
+  name: "BaseCheckList",
   props: {
-    serial: {
+    itemid: {
       type: String,
       default: "0",
     },
-    cliente: {
+    itemcontent: {
       type: String,
       default: "Valko Medical",
     },
   },
   data() {
     return {
-      check: false,
+      checked: false,
     };
   },
   methods: {
@@ -41,7 +40,7 @@ export default {
 </script>
 
 <style scoped>
-.item {
+.item-checkList {
   display: flex;
   align-items: center;
   text-align: left;
@@ -55,27 +54,23 @@ export default {
   color: var(--text-color);
 }
 
-.item:hover,
-.active {
+.item-checkList:hover,
+.is-Active {
   background-color: var(--bg-list);
 }
 
-.item input {
+input {
   width: 1rem;
   height: 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
 }
 
-.item span {
-  display: block;
+.item-id {
+  flex-grow: 1;
 }
 
-.item .cel1 {
-  width: 25%;
-}
-
-.item .cel2 {
-  width: 75%;
+.iten-content {
+  flex-grow: 3;
 }
 </style>

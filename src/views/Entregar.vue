@@ -1,29 +1,39 @@
 <template>
   <div class="entregar">
     <h2>Entrega de balones a Cliente.</h2>
-    <Inputs type="number" name="traking">Numero de traking</Inputs>
-    <Inputs type="text" name="paciente">Nombre del Paciente</Inputs>
-    <ItemList
+    <BaseInput v-model="traking" name="traking" type="number">
+      Numero de traking
+    </BaseInput>
+    <BaseInput v-model="nombre" name="nombre" type="text">
+      Nombre del Paciente
+    </BaseInput>
+    <BaseCheckList
       v-for="n in 3"
       :key="n"
-      serial="123456"
-      cliente="Wladimir Perez"
+      itemid="123456"
+      itemcontent="Wladimir Perez"
     />
-    <Buttons>Entregar</Buttons>
+    <BaseButton>Entregar</BaseButton>
   </div>
 </template>
 
 <script>
-import Inputs from "@/components/Inputs.vue";
-import ItemList from "@/components/ItemList.vue";
-import Buttons from "@/components/Buttons.vue";
+import BaseInput from "@/components/BaseInput.vue";
+import BaseCheckList from "@/components/BaseCheckList.vue";
+import BaseButton from "@/components/BaseButton.vue";
 
 export default {
   name: "Entregar",
   components: {
-    Inputs,
-    ItemList,
-    Buttons,
+    BaseInput,
+    BaseCheckList,
+    BaseButton,
+  },
+  data() {
+    return {
+      traking: "",
+      nombre: "",
+    };
   },
 };
 </script>

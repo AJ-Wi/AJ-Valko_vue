@@ -3,24 +3,26 @@
     <h2>
       {{ title }} <span v-if="error === false">{{ countSend }}</span>
     </h2>
-    <ItemList
+    <BaseCheckList
       v-for="n in data"
       :key="n.serial"
-      :serial="n.serial"
-      :cliente="n.nombre"
+      :itemid="n.serial"
+      :itemcontent="n.nombre"
     />
-    <button type="button" class="btn" :disabled="disabled" @click="postFetch">
+    <BaseButton :disabled="disabled" @click="postFetch">
       {{ operacion }}
-    </button>
+    </BaseButton>
   </div>
 </template>
 <script>
-import ItemList from "@/components/ItemList.vue";
+import BaseCheckList from "@/components/BaseCheckList.vue";
+import BaseButton from "@/components/BaseButton.vue";
 //al darle click a los balones en la seccion de recibir que aparesca un boton que de opcion a devolver en caso de equivocarse cuando uno los manda a planta.
 export default {
   name: "Relationship",
   components: {
-    ItemList,
+    BaseCheckList,
+    BaseButton,
   },
   props: {
     operacion: {

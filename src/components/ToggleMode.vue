@@ -45,6 +45,13 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.val1 !== "") {
+      this.$emit("value", this.val1);
+    } else {
+      this.$emit("value", 0);
+    }
+  },
   methods: {
     insertValue() {
       if (this.dark) {
@@ -53,8 +60,18 @@ export default {
       } else if (this.text) {
         if (!this.check) {
           this.value = this.val1;
+          if (this.val1 !== "") {
+            this.$emit("value", this.val1);
+          } else {
+            this.$emit("value", 0);
+          }
         } else {
           this.value = this.val2;
+          if (this.val2 !== "") {
+            this.$emit("value", this.val2);
+          } else {
+            this.$emit("value", 1);
+          }
         }
       }
     },

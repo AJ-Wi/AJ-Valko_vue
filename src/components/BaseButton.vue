@@ -1,5 +1,7 @@
 <template>
-  <button type="button" class="btn" @click="enviar"><slot></slot></button>
+  <button type="button" class="btn">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
@@ -7,12 +9,6 @@ export default {
   name: "Buttons",
   data() {
     return {};
-  },
-  methods: {
-    enviar() {
-      console.log("click boton enviar");
-      //prevent default
-    },
   },
 };
 </script>

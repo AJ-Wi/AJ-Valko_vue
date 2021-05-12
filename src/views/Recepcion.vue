@@ -1,40 +1,98 @@
 <template>
   <div class="recepcion">
-    <Inputs type="text" name="nombre">Nombre del Paciente</Inputs>
-    <Inputs type="number" name="dni">DNI del Paciente</Inputs>
-    <Inputs type="tel" name="celular">Telefono</Inputs>
-    <Inputs type="text" name="autorizador">Quien autoriza</Inputs>
-    <Inputs type="text" name="serial">Serial del balon</Inputs>
-    <Inputs type="text" name="marca">Marca del balon</Inputs>
-    <ToggleMode text="true">Tulipa</ToggleMode>
-    <ToggleMode text="true" val1="8" val2="10">Capacidad</ToggleMode>
-    <Buttons>Guardar</Buttons>
-    <Buttons>añadir balon</Buttons>
-    <button type="button" class="btn" @click="addBalon">nuevo balon</button>
-    {{ balones }}
+    <BaseInput v-model="dni" name="dni" type="number">
+      DNI del Cliente
+    </BaseInput>
+    <BaseInput v-model="nombre" name="nombre" type="text">
+      Nombre del Paciente
+    </BaseInput>
+    <BaseInput v-model="telefono" name="telefono" type="tel">
+      Telefono
+    </BaseInput>
+    <BaseInput v-model="autorizador" name="autorizador" type="text">
+      Quien autoriza
+    </BaseInput>
+    <BaseInput v-model="serial" name="serial" type="text">
+      Serial del balon
+    </BaseInput>
+    <BaseInput v-model="marca" name="marca" type="text">
+      Marca del balon
+    </BaseInput>
+    <ToggleMode text="true" @value="tulipa = $event">Tulipa</ToggleMode>
+    <ToggleMode text="true" val1="8" val2="10" @value="capacidad = $event"
+      >Capacidad
+    </ToggleMode>
+    <BaseButton @click="saveRegister">Guardar</BaseButton>
+    <BaseButton @click="addBalon">Añadir balon</BaseButton>
+    <BaseList
+      v-for="n in balones"
+      :key="n.serial"
+      :itemid="n.serial"
+      :itemcontent="n.marca"
+    />
   </div>
 </template>
 
 <script>
-import Inputs from "@/components/Inputs.vue";
+import { mapActions } from "vuex";
 import ToggleMode from "@/components/ToggleMode.vue";
-import Buttons from "@/components/Buttons.vue";
+import BaseList from "@/components/BaseList.vue";
+import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue";
 
 export default {
   name: "Recepcion",
   components: {
-    Inputs,
     ToggleMode,
-    Buttons,
+    BaseList,
+    BaseButton,
+    BaseInput,
   },
-  computed: {
-    balones() {
-      return this.$store.state.serialReception;
-    },
+  data() {
+    return {
+      dni: "",
+      nombre: "",
+      telefono: "",
+      autorizador: "",
+      serial: "",
+      marca: "",
+      tulipa: "",
+      capacidad: "",
+      balones: [],
+      clientesDB: "",
+      balonesDB: "",
+    };
   },
   methods: {
+    ...mapActions(["getBalones"]),
+    async getFetch() {
+      let ruta = "http://192.168.100.36:5555/APIs/AJ-dev-api/v1/clientes";
+      const options = {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
+        },
+      };
+      const response = await this.executeFetch(ruta, options);
+      if (response["status_id"] === "200") {
+        this.clientesDB = response.response;
+      }
+    },
     addBalon() {
-      this.$store.commit("listReception", "12345");
+      if (this.serial !== "") {
+        this.balones.push({
+          serial: this.serial,
+          marca: this.marca,
+          tulipa: this.tulipa,
+          capacidad: this.capacidad,
+        });
+        this.serial = "";
+        this.marca = "";
+      }
+    },
+    saveRegister() {
+      //guardar registro en la bbdd
     },
   },
   /* Me traigo por fetch los datos de balones y clientes
