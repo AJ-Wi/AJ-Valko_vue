@@ -1,18 +1,28 @@
 <template>
   <div class="recepcion">
-    <BaseInput v-model="dni" name="dni" type="number">
+    <BaseInput
+      v-model="newData.dni"
+      name="dni"
+      type="number"
+      @focusout="searchCliente"
+    >
       DNI del Cliente
     </BaseInput>
-    <BaseInput v-model="nombre" name="nombre" type="text">
+    <BaseInput v-model="newData.nombre" name="nombre" type="text">
       Nombre del Paciente
     </BaseInput>
-    <BaseInput v-model="telefono" name="telefono" type="tel">
+    <BaseInput v-model="newData.telefono" name="telefono" type="tel">
       Telefono
     </BaseInput>
-    <BaseInput v-model="autorizador" name="autorizador" type="text">
+    <BaseInput v-model="newData.autorizador" name="autorizador" type="text">
       Quien autoriza
     </BaseInput>
-    <BaseInput v-model="serial" name="serial" type="text">
+    <BaseInput
+      v-model="serial"
+      name="serial"
+      type="text"
+      @focusout="searchBalon"
+    >
       Serial del balon
     </BaseInput>
     <BaseInput v-model="marca" name="marca" type="text">
@@ -22,10 +32,10 @@
     <ToggleMode text="true" val1="8" val2="10" @value="capacidad = $event"
       >Capacidad
     </ToggleMode>
-    <BaseButton @click="saveRegister">Guardar</BaseButton>
+    <BaseButton @click="postData">Guardar</BaseButton>
     <BaseButton @click="addBalon">Añadir balon</BaseButton>
     <BaseList
-      v-for="n in balones"
+      v-for="n in newData.balones"
       :key="n.serial"
       :itemid="n.serial"
       :itemcontent="n.marca"
@@ -34,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import ToggleMode from "@/components/ToggleMode.vue";
 import BaseList from "@/components/BaseList.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -50,6 +60,13 @@ export default {
   },
   data() {
     return {
+      newData: {
+        dni: "",
+        nombre: "",
+        telefono: "",
+        autorizador: "",
+        balones: [],
+      },
       dni: "",
       nombre: "",
       telefono: "",
@@ -58,30 +75,24 @@ export default {
       marca: "",
       tulipa: "",
       capacidad: "",
+      dniUser: "",
       balones: [],
       clientesDB: "",
       balonesDB: "",
     };
   },
+  computed: {
+    ...mapState(["dateNow", "dataSet"]),
+  },
+  mounted() {
+    this.getClientes();
+    this.getBalones();
+  },
   methods: {
-    ...mapActions(["getBalones"]),
-    async getFetch() {
-      let ruta = "http://192.168.100.36:5555/APIs/AJ-dev-api/v1/clientes";
-      const options = {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
-        },
-      };
-      const response = await this.executeFetch(ruta, options);
-      if (response["status_id"] === "200") {
-        this.clientesDB = response.response;
-      }
-    },
+    ...mapActions(["formatDate", "getFetch", "postFetch", "clearDataSet"]),
     addBalon() {
       if (this.serial !== "") {
-        this.balones.push({
+        this.newData.balones.push({
           serial: this.serial,
           marca: this.marca,
           tulipa: this.tulipa,
@@ -91,14 +102,59 @@ export default {
         this.marca = "";
       }
     },
-    saveRegister() {
-      //guardar registro en la bbdd
+    async postData() {
+      this.formatDate(new Date());
+      this.newData.dniUser = "14261751";
+      this.newData.fecha = this.dateNow;
+      await this.postFetch({
+        ruta: "movimientos/recepcion",
+        body: this.newData,
+      });
+      if (this.dataSet["status_id"] !== "201") {
+        this.errorFetch(this.dataSet);
+      }
+      this.clearDataSet();
+    },
+    async getClientes() {
+      await this.getFetch("clientes");
+      if (this.dataSet["status_id"] === "200") {
+        this.clientesDB = this.dataSet.response;
+      }
+      this.clearDataSet();
+    },
+    async getBalones() {
+      await this.getFetch("balones");
+      if (this.dataSet["status_id"] === "200") {
+        this.balonesDB = this.dataSet.response;
+      }
+      this.clearDataSet();
+    },
+    searchCliente() {
+      this.clientesDB.forEach((el) => {
+        if (this.newData.dni === el.dni) {
+          this.newData.nombre = el.nombre;
+          this.newData.telefono = el.telefono;
+          this.newData.autorizador = el.autorizador;
+        }
+      });
+    },
+    searchBalon() {
+      this.balonesDB.forEach((el) => {
+        if (this.serial === el.serial) {
+          this.marca = el.marca;
+        }
+      });
+    },
+    errorFetch(params) {
+      this.title = "ERROR";
+      this.data = [
+        {
+          serial: params["status_id"],
+          nombre: params.response,
+        },
+      ];
     },
   },
-  /* Me traigo por fetch los datos de balones y clientes
-  al escribir el nombre del cliente o su dni actualiza los inputs con los datos del cliente.
-  y al escribir el serial del balon se rellenan los inputs con los datos del balon.
-  */
 };
 </script>
 

@@ -48,6 +48,9 @@ export default {
       },
     },
   },
+  updated() {
+    this.inputActive();
+  },
   methods: {
     inputActive($e) {
       if (this.modelValue !== "" || $e === "focus") {

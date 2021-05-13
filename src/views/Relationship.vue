@@ -9,12 +9,13 @@
       :itemid="n.serial"
       :itemcontent="n.nombre"
     />
-    <BaseButton :disabled="disabled" @click="postFetch">
+    <BaseButton :disabled="disabled" @click="postData">
       {{ operacion }}
     </BaseButton>
   </div>
 </template>
 <script>
+import { mapActions, mapState } from "vuex";
 import BaseCheckList from "@/components/BaseCheckList.vue";
 import BaseButton from "@/components/BaseButton.vue";
 //al darle click a los balones en la seccion de recibir que aparesca un boton que de opcion a devolver en caso de equivocarse cuando uno los manda a planta.
@@ -36,34 +37,41 @@ export default {
       title: "",
       disabled: true,
       error: false,
-      localState: "enviar",
+      localState: "",
     };
   },
   computed: {
-    countSend() {
-      return this.$store.state.countSend;
-    },
-    serialSend() {
-      return this.$store.state.serialSend;
-    },
-    dateNow() {
-      this.$store.commit("updateDate", new Date());
-      return this.$store.state.dateNow;
-    },
+    ...mapState(["countSend", "serialSend", "dateNow", "dataSet"]),
   },
   mounted() {
-    this.$store.commit("resetSend");
-    this.getFetch();
+    this.updateState();
   },
   updated() {
     this.updateState();
   },
   methods: {
+    ...mapActions([
+      "formatDate",
+      "resetSend",
+      "getFetch",
+      "postFetch",
+      "clearDataSet",
+    ]),
+    /*
+     * funcion para actualizar el estado de la vista y mostrar o la vista de enviar o la de recibir balones de planta
+     */
     updateState() {
+      //la operacion se actualiza con el hash de la url y la comparo con el estado loca de la vista si es diferente hay que actualizar la vista.
       if (this.operacion != this.localState) {
-        this.$store.commit("resetSend");
-        this.getFetch();
-        this.localState = this.operacion;
+        this.resetSend(); //aplicamos un reset del estado de la tienda
+        this.localState = this.operacion; //actualizamos el estado de la vista
+        if (this.operacion === "enviar") {
+          this.title = `Balones para enviar a planta: `;
+          this.getData("movimientos/recepcion"); //llamamos a la funcion getData para actualizar los datos a mostrar
+        } else if (this.operacion === "recibir") {
+          this.title = `Balones recividos de planta: `;
+          this.getData("movimientos/enviar"); //llamamos a la funcion getData para actualizar los datos a mostrar
+        }
       }
       if (this.countSend > 0) {
         this.disabled = false;
@@ -71,36 +79,17 @@ export default {
         this.disabled = true;
       }
     },
-    async getFetch() {
-      let ruta = "";
-      if (this.operacion === "enviar") {
-        this.title = `${this.operacion} balones a planta: `;
-        ruta = "/recepcion";
-      } else if (this.operacion === "recibir") {
-        this.title = `${this.operacion} balones de planta: `;
-        ruta = "/enviar";
-      }
-      const requestOptions = {
-        method: "get",
-      };
-      const response = await this.executeFetch(ruta, requestOptions);
-      if (response["status_id"] === "200") {
-        this.data = response.response;
+    async getData(ruta) {
+      await this.getFetch(ruta);
+      if (this.dataSet["status_id"] === "200") {
+        this.data = this.dataSet.response;
       } else {
-        this.title = "ERROR";
-        this.data = [
-          {
-            serial: response["status_id"],
-            nombre: response.response,
-          },
-        ];
-        this.disabled = true;
-        this.error = true;
+        this.errorFetch(this.dataSet);
       }
+      this.clearDataSet();
     },
-    async postFetch() {
-      this.$store.commit("updateDate", new Date());
-      //console.log(this.dateNow);
+    async postData() {
+      this.formatDate(new Date());
       const postBody = [];
       this.serialSend.forEach((el) => {
         const resultado = this.data.find((reg) => reg.serial === el);
@@ -114,28 +103,38 @@ export default {
         });
       });
       //console.log(postBody);
-      const requestOptions = {
-        method: "POST",
-        body: JSON.stringify(postBody),
-      };
-      const response = await this.executeFetch("/relationship", requestOptions);
-      if (response["status_id"] === "201") {
-        this.$store.commit("resetSend");
-        this.getFetch();
+      await this.postFetch({
+        ruta: "movimientos/relationship",
+        body: postBody,
+      });
+      if (this.dataSet["status_id"] === "201") {
+        this.localState = "";
+        this.updateState();
+      } else {
+        this.errorFetch(this.dataSet);
       }
+      this.clearDataSet();
     },
-    async executeFetch(ruta, requestOptions) {
-      let url = `http://192.168.100.36:5555/APIs/AJ-dev-api/v1/movimientos${ruta}`;
-      requestOptions["headers"] = {
-        "Content-Type": "application/json",
-        Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
-      };
-      //console.log(url, requestOptions);
-      const response = await fetch(url, requestOptions);
-      const data = await response.json();
-      return data;
-      //console.log(data);
+    errorFetch(params) {
+      this.title = "ERROR";
+      this.data = [
+        {
+          serial: params["status_id"],
+          nombre: params.response,
+        },
+      ];
+      this.disabled = true;
+      this.error = true;
     },
   },
 };
 </script>
+
+<style scoped>
+.relationship {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  align-items: center;
+}
+</style>

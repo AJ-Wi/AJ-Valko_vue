@@ -6,7 +6,7 @@ export default createStore({
       countSend: 0,
       serialSend: [],
       dateNow: "",
-      balones: [],
+      dataSet: [],
     };
   },
   mutations: {
@@ -24,26 +24,53 @@ export default createStore({
       state.serialSend = [];
     },
     updateDate(state, f) {
-      let now = new Date(f);
-      state.dateNow = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+      state.dateNow = f;
     },
-    addBalones(state, getBalones) {
-      state.balones = getBalones;
+    fillData(state, data) {
+      state.dataSet = data;
+    },
+    clearDataSet(state) {
+      state.dataSet = [];
     },
   },
   actions: {
-    async getBalones({ commit }, ruta) {
-      let url = `http://192.168.100.36:5555/APIs/AJ-dev-api/v1/balones${ruta}`;
+    async getFetch({ commit }, ruta) {
+      let url = `http://localhost:5555/APIs/AJ-dev-api/v1/${ruta}`;
       const requestOptions = {
         method: "get",
-      };
-      requestOptions["headers"] = {
-        "Content-Type": "application/json",
-        Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
+        },
       };
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      commit("addBalones", data);
+      commit("fillData", data);
+    },
+    async postFetch({ commit }, options) {
+      let url = `http://localhost:5555/APIs/AJ-dev-api/v1/${options.ruta}`;
+      const requestOptions = {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "769fb7afe1e40d4bbbabf39905a4865d",
+        },
+        body: JSON.stringify(options.body),
+      };
+      const response = await fetch(url, requestOptions);
+      const data = await response.json();
+      commit("fillData", data);
+    },
+    formatDate({ commit }, f) {
+      let now = f;
+      const newDate = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+      commit("updateDate", newDate);
+    },
+    clearDataSet({ commit }) {
+      commit("clearDataSet");
+    },
+    resetSend({ commit }) {
+      commit("resetSend");
     },
   },
   modules: {},
