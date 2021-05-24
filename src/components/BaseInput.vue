@@ -39,7 +39,7 @@ export default {
     valor: {
       get() {
         if (this.modelValue === "") {
-          this.inputActive();
+          this.inputActive("focus");
         }
         return this.modelValue;
       },
@@ -48,7 +48,7 @@ export default {
       },
     },
   },
-  updated() {
+  mounted() {
     this.inputActive();
   },
   methods: {

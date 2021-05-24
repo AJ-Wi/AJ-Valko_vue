@@ -67,16 +67,11 @@ export default {
         autorizador: "",
         balones: [],
       },
-      dni: "",
-      nombre: "",
-      telefono: "",
-      autorizador: "",
       serial: "",
       marca: "",
       tulipa: "",
       capacidad: "",
       dniUser: "",
-      balones: [],
       clientesDB: "",
       balonesDB: "",
     };
@@ -85,6 +80,7 @@ export default {
     ...mapState(["dateNow", "dataSet"]),
   },
   mounted() {
+    //cargar mejor solo uno segun se escriba en el input
     this.getClientes();
     this.getBalones();
   },
@@ -100,6 +96,8 @@ export default {
         });
         this.serial = "";
         this.marca = "";
+        this.tulipa = "";
+        this.capacidad = "";
       }
     },
     async postData() {
@@ -113,6 +111,8 @@ export default {
       if (this.dataSet["status_id"] !== "201") {
         this.errorFetch(this.dataSet);
       }
+      alert(this.dataSet.response);
+      this.resetNewData();
       this.clearDataSet();
     },
     async getClientes() {
@@ -144,6 +144,13 @@ export default {
           this.marca = el.marca;
         }
       });
+    },
+    resetNewData() {
+      this.newData.dni = "";
+      this.newData.nombre = "";
+      this.newData.telefono = "";
+      this.newData.autorizador = "";
+      this.newData.balones = [];
     },
     errorFetch(params) {
       this.title = "ERROR";
